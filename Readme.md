@@ -4,7 +4,7 @@ This is a movie booking web application
 
 ## 🔗 Deployed Link
 
-### [Live Link](https://reminder-app-ineternship.netlify.app/ "Live")
+### [Live Link](https://movie-maze-internship-project.netlify.app/ "Live")
 
 ## 📷 Sreenshots
 
