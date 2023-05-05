@@ -9,9 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     Axios.get("https://api.tvmaze.com/search/shows?q=all")
       .then((res) => {
-        console.log(res.data);
         setMovieList(res.data);
-        console.log(movieList);
       })
       .catch((error) => console.log(error.message));
   }, []);

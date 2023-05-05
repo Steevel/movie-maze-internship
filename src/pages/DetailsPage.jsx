@@ -17,9 +17,7 @@ const DetailsPage = () => {
   useEffect(() => {
     Axios.get(`https://api.tvmaze.com/shows/${id}`)
       .then((res) => {
-        console.log(res.data);
         setMovieData(res.data);
-        console.log(movieData);
       })
       .catch((error) => console.log(error.message));
   }, []);
@@ -42,7 +40,11 @@ const DetailsPage = () => {
               <div>
                 <span className="me-2">
                   <i className="bi bi-star-fill me-1 text-warning"></i>
-                  <strong>{movieData.rating?.average?.toFixed(1)}</strong>
+                  <strong>
+                    {movieData.rating?.average
+                      ? movieData.rating?.average?.toFixed(1)
+                      : "0.0"}
+                  </strong>
                 </span>
                 {movieData.genres?.map((genre, index) => (
                   <span
@@ -56,18 +58,32 @@ const DetailsPage = () => {
 
               <p className="card-text mt-1">
                 <small className="text-body-secondary me-2">
-                  <strong>Runtime:</strong>{" "}
-                  <em>{movieData.runtime || movieData.averageRuntime} min</em>
+                  <strong>Runtime:</strong>
+                  <em>
+                    {" "}
+                    {movieData.runtime || movieData.averageRuntime
+                      ? movieData.runtime || movieData.averageRuntime
+                      : "0"}{" "}
+                    min
+                  </em>
                 </small>
                 <small className="text-body-secondary me-2">
-                  <strong>Language:</strong> <em>{movieData.language}</em>
+                  <strong>Language:</strong>
+                  <em>
+                    {" "}
+                    {movieData.language ? movieData.language : "English"}
+                  </em>
                 </small>
                 <small className="text-body-secondary me-2">
-                  <strong>Premiered:</strong>{" "}
-                  <em>{movieData.premiered?.split("-").reverse().join("-")}</em>
+                  <strong>Premiered:</strong>
+                  <em>
+                    {" "}
+                    {movieData.premiered?.split("-").reverse().join("-")}
+                  </em>
                 </small>
               </p>
 
+              <h4>Summary</h4>
               <p className="card-text my-2">
                 {strip_html_tags(movieData.summary)}
               </p>
@@ -80,7 +96,7 @@ const DetailsPage = () => {
               >
                 Book Movie
               </button>
-              <Modal />
+              <Modal movieData={movieData} />
             </div>
           </div>
         </div>
