@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
-    <nav className="navbar bg-primary">
+    <nav className="navbar bg-dark">
       <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1 text-white">Movie Maze</span>
+        <Link to="/" className="navbar-brand text-white" href="#">
+          Movie Maze
+        </Link>
       </div>
     </nav>
   );
